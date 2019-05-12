@@ -1,0 +1,1 @@
+heat transfer laminar flow rotate plate exact solution heat transfer problem von karman example laminar flow viscous fluid rotate plate give dimensionless form physically discuss solution explicitly give constant temperature plate viscous dissipation include numerical result give prandtl number 0.5 10

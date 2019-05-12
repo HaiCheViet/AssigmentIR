@@ -1,0 +1,1 @@
+boundary layer flat plate stream uniform shear incompressible laminar boundary layer semi infinite flat plate consider main stream uniform shear solution obtain term asymptotic solution small viscosity show principal effect free stream vorticity introduce modify pressure field outside boundary layer region

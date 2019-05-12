@@ -1,0 +1,1 @@
+liapunov method automatic control theory work a. m. liapunov theory stability discuss second method liapunov show application linear equation real constant coefficient proof routh hurwitz criterion linear equation periodic coefficient practical example include non linear stability problem control function use area control system

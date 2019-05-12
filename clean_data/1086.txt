@@ -1,0 +1,1 @@
+note numerical solution fourth order differential equation old numerical method solve fourth order differential equation relaxation form high order correction term include technique illustrate example method advantage rapidly convergent usual relaxation procedure fourth order equation comment numerical solution viscous flow equation

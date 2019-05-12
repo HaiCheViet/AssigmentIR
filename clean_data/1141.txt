@@ -1,0 +1,1 @@
+wake oscillating vehicle incompressible laminar far wake oscillating vehicle analyze use oseen linearization assumption wake cross section axisymmetric time wise drag variation represent change wake diameter velocity defect show unsteadiness flow predict quasi steady theory

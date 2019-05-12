@@ -1,0 +1,1 @@
+measurement mach number 2 8 longitudinal characteristic plane camber slender ogee wing measurement longitudinal characteristic plane camber slender ogee wing p    0.45    subsonic supersonic mach number 2.8 test include measurement zero lift pressure drag support interference plane wing result analyse datum estimate performance supersonic transport aircraft

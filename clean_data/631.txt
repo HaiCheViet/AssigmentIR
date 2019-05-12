@@ -1,0 +1,1 @@
+low speed wind tunnel test dimensional aerofoil split flap near ground pressure distribution measure 10 thick dimensional aerofoil r.a.e.101 section fit split flap deflect 15 55 measurement distance ground plate ground plate result integrate sectional lift drag pitching moment coefficient

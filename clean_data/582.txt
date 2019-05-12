@@ -1,0 +1,1 @@
+melting finite slab approximate method know heat balance integral determine melting rate finite slab initially uniform temperature melting point slab act constant heat input face face insulate keep initial temperature term series solution intrinsically small parameter obtain time history melting temperature distribution slab

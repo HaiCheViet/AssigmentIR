@@ -1,0 +1,1 @@
+shear flow porous coaxial cylinder flow concentric porous cylinder relative axial motion pressure gradient consider analysis restrict assumption velocity distribution function radial coordinate net injection withdrawal fluid station assumption reduce problem soluble system ordinary differential equation associated heat transfer problem discuss briefly

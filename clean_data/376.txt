@@ -1,0 +1,1 @@
+transformation compressible incompressible boundary layer equation propose boundary layer equation compressible flow reduce incompressible flow work initiate stewartson rott crabtree follow restriction impose reference 1 2 remove show transformation compressible boundary layer incompressible boundary layer apply laminar turbulent case direct method purpose

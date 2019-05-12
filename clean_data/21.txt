@@ -1,0 +1,1 @@
+heat transfer slip flow number author consider effect slip heat transfer skin friction laminar boundary layer flat plate reference 1 consider perturbation usual laminar boundary layer analysis studies.dash e.g. reference impulsive motion infinite plate

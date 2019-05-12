@@ -1,0 +1,1 @@
+navi stoke solution large distance finite body paper concern theoretical investigation flow field large distance object move viscous fluid discussion restrict case dimensional stationary incompressible flow object assume finite size domain fluid infinite assume boundary fluid give object reynolds number assume fix value shall consider limit case reynold number tend zero infinity

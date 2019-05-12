@@ -1,0 +1,1 @@
+simple shear flow past flat plate compressible viscous fluid transformation variable problem simple shear flow compressible fluid flat plate reduce corresponding problem incompressible fluid prandtl number compressible fluid assume unity viscosity linear function temperature

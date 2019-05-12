@@ -1,0 +1,1 @@
+local heat transfer yawed infite circular cylinder laminar compressible flow note present simplification method calculate ratio local stagnation line heat transfer coefficient yawed infinite circular cylinder laminar compressible flow brief description method ref 1 present follow discussion assumption mathematical procedure lead considerable simplification

@@ -1,0 +1,14 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+/raw_data/
+/doc-embedding/glove.840B.300d.txt
+/doc-embedding/glove.npz
+/doc-embedding/d2v.model
+/doc-embedding/.ipynb_checkpoints/

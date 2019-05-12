@@ -1,0 +1,1 @@
+buckling thin cylindrical shell hoop stress vary axial direction buckling thin cylindrical shell simply support perimeter end section analyze hoop compressive stress vary axial direction thermal stress arise uniform increase temperature cylinder determine find thermal stress likely cause elastic buckling simple approximate formula develop buckle stress thermal stress
