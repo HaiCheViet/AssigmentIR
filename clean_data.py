@@ -3,22 +3,31 @@ import os
 import glob
 from tqdm import tqdm
 import re
-nlp = spacy.load("en")
+from nltk.stem import WordNetLemmatizer
+from nltk.stem.snowball import SnowballStemmer
 
+
+snowball_stemmer = SnowballStemmer(language = 'english')
+wordnet_lemmatizer = WordNetLemmatizer()
+
+stop_file = open('stopwords_en.txt')
+stop_list = list(stop_file.read().splitlines())
+stop_file.close()
 
 def remove_special_character(text):
-    data = re.sub("[^a-z0-9@.\-']", " ", text)
+    data = re.sub(r"[^a-zA-Z]+", " ", text)
     return data
 
 def normalize(text):
-    text = remove_special_character(text)
-    doc = nlp(text)
+    text = text.lower()
+    text = remove_special_character(text).split()
     result = []
-    for token in doc:
-        # Remove punct and stop word
-        if not token.is_stop and not token.is_punct:
-            if token.lemma_ != " ":
-                result.append(token.lemma_)
+    for token in text:
+        if token not in stop_list:
+            token = wordnet_lemmatizer.lemmatize(token)
+            token = snowball_stemmer.stem(token)
+            if token != ' ':
+                result.append(token)
 
     return " ".join(result)
 
