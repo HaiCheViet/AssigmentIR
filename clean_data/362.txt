@@ -1,1 +1,1 @@
-dimensional effect flutter real fluid ref 1 alternative semi empirical formulation flutter real fluid give accurate determination empirical coefficient dimensional effect finite span take account follow reissner approximation large aspect ratio rectangular wing boundary value problem govern downwash w vorticity distribution
+dimension effect flutter real fluid ref altern semi empir formul flutter real fluid accur determin empir coeffici dimension effect finit span account reissner approxim larg aspect ratio rectangular wing boundari problem govern downwash vortic distribut

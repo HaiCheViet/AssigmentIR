@@ -1,1 +1,1 @@
-bending circular cylindrical shell pure bending stability circular cylindrical shell pure bending investigate mean batdorf modified donnell equation galerkin method result investigation show contrary commonly accept value maximum critical bending stress practical purpose equal critical compressive stress
+bend circular cylindr shell pure bend stabil circular cylindr shell pure bend investig mean batdorf modifi donnel equat galerkin method result investig shown contrari common accept maximum critic bend stress practic purpos equal critic compress stress

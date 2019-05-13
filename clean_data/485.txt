@@ -1,1 +1,1 @@
-linear heat flow composite slab temperature determine function position time case linear heat conduction composite slab ture external surface temperature consider prescribe function
+linear heat flow composit slab temperatur determin function posit time case linear heat conduct composit slab ture extern surfac temperatur consid prescrib function

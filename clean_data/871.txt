@@ -1,1 +1,1 @@
-steady state creep dislocation climb dislocation climb creep model consider require production immobile dislocation creep equation result analysis b constant stress q activation energy creep kt usual meaning equation similar previously propose
+steadi state creep disloc climb disloc climb creep model consid requir product immobil disloc creep equat result analysi constant stress activ energi creep kt usual mean equat similar previous propos

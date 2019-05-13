@@ -1,1 +1,1 @@
-numerical solution blasius problem point boundary condition relate technique approximate determination initial parameter technique application asymptotic integration method introduce meksyn apply computation skin friction shock generate boundary layer flow
+numer solut blasius problem point boundari condit relat techniqu approxim determin initi paramet techniqu applic asymptot integr method introduc meksyn appli comput skin friction shock generat boundari layer flow
