@@ -15,7 +15,7 @@ stop_list = list(stop_file.read().splitlines())
 stop_file.close()
 
 def remove_special_character(text):
-    data = re.sub(r"[^a-zA-Z]+", " ", text)
+    data = re.sub(r"[^a-zA-Z\-]+", " ", text)
     return data
 
 def normalize(text):
