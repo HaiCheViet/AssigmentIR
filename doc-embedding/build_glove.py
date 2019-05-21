@@ -11,7 +11,7 @@ import numpy as np
 
 if __name__ == '__main__':
     # Load vocab
-    with Path('../vocab.words.txt').open() as f:
+    with Path('vocab.words.txt').open() as f:
         word_to_idx = {line.strip(): idx for idx, line in enumerate(f)}
     size_vocab = len(word_to_idx)
 
