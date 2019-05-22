@@ -66,7 +66,7 @@ if __name__ == "__main__":
 
     for q in query:
         idx_q = q[0]
-        sentence_pred_vec = sum([get_dense(word_to_idx, i) for i in q[1].split()])
+        sentence_pred_vec = sum([get_dense(word_to_idx, i) for i in set(q[1].split())])
         y_real = dev_eval[idx_q]
 
         temp_order_predict = {}
@@ -83,11 +83,11 @@ if __name__ == "__main__":
 
         temp_order_predict = list(sorted(temp_order_predict.items(), key=lambda kv: (kv[1], kv[0]), reverse=True))
         y_pred = [i[0] for i in temp_order_predict[:len(y_real)]]
-        if calculate_score(y_real, y_pred) == 0:
-            print(temp_order_predict[:len(y_real)])
-            print(y_real)
-            print(idx_q)
-            break
+        # if calculate_score(y_real, y_pred) == 0:
+        #         #     print(temp_order_predict[:len(y_real)])
+        #         #     print(y_real)
+        #         #     print(idx_q)
+        #         #     break
         result_score.append(calculate_score(y_real, y_pred))
     print(result_score)
     score = sum(result_score) / len(result_score)

@@ -36,7 +36,8 @@ if __name__ == "__main__":
         idx = os.path.basename(n).split(".")[0]
         with open(n, "r") as f:
             doc = f.read()
-            sentence_vector = sum([get_dense(word_to_idx, i) for i in doc.split()])
+
+            sentence_vector = sum([get_dense(word_to_idx, i) for i in set(doc.split())])
             if np.isnan(sentence_vector).any():
                 print(sentence_vector)
             save_vector.append((idx, sentence_vector))
