@@ -1,4 +1,3 @@
-import spacy
 import os
 import glob
 from tqdm import tqdm
@@ -6,16 +5,14 @@ import re
 from nltk.stem import WordNetLemmatizer
 from nltk.stem.snowball import SnowballStemmer
 
-
 snowball_stemmer = SnowballStemmer(language = 'english')
 wordnet_lemmatizer = WordNetLemmatizer()
-
 stop_file = open('stopwords_en.txt')
 stop_list = list(stop_file.read().splitlines())
 stop_file.close()
 
 def remove_special_character(text):
-    data = re.sub(r"[^a-zA-Z\-]+", " ", text)
+    data = re.sub(r"[^a-z\-]+", " ", text)
     return data
 
 def normalize(text):
@@ -32,10 +29,12 @@ def normalize(text):
     return " ".join(result)
 
 
-list_data = glob.glob("raw_data/*")
-for i in tqdm(list_data):
-    with open(i, "r") as f:
-        data = normalize(f.read())
-        name_txt = os.path.basename(i)
-        with open(f"clean_data/{name_txt}", "w") as out:
-            out.write(data)
+if __name__ == "__main__":
+    
+    list_data = glob.glob("raw_data/*")
+    for i in tqdm(list_data):
+        with open(i, "r") as f:
+            data = normalize(f.read())
+            name_txt = os.path.basename(i)
+            with open(f"clean_data/{name_txt}", "w") as out:
+                out.write(data)

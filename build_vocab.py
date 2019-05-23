@@ -13,18 +13,24 @@ if __name__ == '__main__':
     # 1. Words
     # Get Counter of words on all the data, filter by min count, save
     list_data = glob("clean_data/*")
-
     print('Build vocab words (may take a while)')
     counter_words = Counter()
-    for n in list_data:
-        with Path(n).open() as f:
-            for line in f:
-                counter_words.update(line.strip().split())
+    docs_list = []
+    with open('docs_list.txt', 'w') as docs_list_f:
+        for n in list_data:
+            with Path(n).open() as f:
+                words = f.read()
+                docs_list_f.write(words+'\n')
+                words = words.strip().split()
+                counter_words.update(words)
+                
 
-    vocab_words = {w for w, c in counter_words.items() if c >= MINCOUNT}
+    filtering = {w:c for w, c in counter_words.items() if c >= MINCOUNT}
+    sort = sorted(filtering.items(), key= lambda x:x[0])
+
 
     with Path('vocab.words.txt').open('w') as f:
-        for w in sorted(list(vocab_words)):
-            f.write('{}\n'.format(w))
+        for w, c in sort:
+            f.write('{} {}\n'.format(w,c))
     print('- done. Kept {} out of {}'.format(
-        len(vocab_words), len(counter_words)))
+        len(filtering), len(counter_words)))
