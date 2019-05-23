@@ -22,7 +22,7 @@ def normalize(text):
     for token in text:
         if token not in stop_list:
             token = wordnet_lemmatizer.lemmatize(token)
-            token = snowball_stemmer.stem(token)
+            # token = snowball_stemmer.stem(token)
             if token != ' ':
                 result.append(token)
 
