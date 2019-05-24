@@ -1,91 +1,56 @@
-import pickle
-import re
-from collections import defaultdict
-from glob import glob
+import os
+from tqdm import tqdm
 
-import numpy as np
-from export_vector import get_dense
-from numpy import dot
-from numpy.linalg import norm
+path = os.getcwd()
+query_index_list = os.listdir(os.path.join(path, r'DEV-TEST/RES'))
 
-from clean_data import normalize
+def read_real_file(text):
+    text = text.replace('\t',' ')
+    lines = text.splitlines()
+    real_doc_list = [int(line.split()[1]) for line in lines if line != '']
+    real_doc_list.pop()
+    return real_doc_list
 
+def read_predict_file(text):
+    lines = text.splitlines()
+    predict_doc_list = [int(line.split()[1]) for line in lines]
+    return predict_doc_list
 
-def read_list(file="outfile"):
-    with open(file, 'rb') as fp:
-        itemlist = pickle.load(fp)
-    return itemlist
+AP_list = []
+for file_name in tqdm(query_index_list):
+    with open(os.path.join(path, r'DEV-TEST/RES', file_name)) as f1:
+        real_doc_list = read_real_file(f1.read())
+        f1.close()
+    with open(os.path.join(path,'result',file_name)) as f2:
+        predict_doc_list = read_predict_file(f2.read())
+        f2.close()
+    expected_relevant_doc_number = len(real_doc_list)
+    non_interpolating_r = []
+    non_interpolating_p = []
+    counter = 1
+    for i in range(len(predict_doc_list)):
+        if predict_doc_list[i] in real_doc_list:
+            non_interpolating_r.append(counter/expected_relevant_doc_number)
+            non_interpolating_p.append(counter/(i+1))
+            counter += 1
+            if counter > expected_relevant_doc_number:
+                break
 
+    interpolating_r = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+    interpolating_p = []
+    index = 0
+    for i in range(len(interpolating_r)):
+        while (index < len(non_interpolating_r) and non_interpolating_r[index] < interpolating_r[i]):
+            index += 1
+        if index >= len(non_interpolating_r):
+            break
+        interpolating_p.append(max(non_interpolating_p[index:]))
+    AP = sum(interpolating_p)/11.0
+    AP_list.append(AP)
 
-def init_query(path="../DEV-TEST/query.txt"):
-    query = []
+print(AP_list)
+MAP = sum(AP_list)/len(AP_list)
+print(MAP)
+        
 
-    with open(path, "r") as f:
-        for i in f:
-            item = re.split(r"\t+", i)
-            if len(item) != 2:
-                continue
-            idx = item[0]
-            sentence_predict = normalize(item[1])
-            query.append((idx, sentence_predict))
-    return query
-
-
-def init_dev_eval(path="../DEV-TEST/RES/*"):
-    dev_eval_list = glob("../DEV-TEST/RES/*")
-    dev_eval = defaultdict(list)
-
-    for file_path in dev_eval_list:
-        with open(file_path, "r") as f:
-            for i in f:
-                item = re.split(r"\t+", i)[0].split()
-                if len(item) != 2:
-                    continue
-
-                idx = item[0]
-                match_file = item[1]
-                dev_eval[idx].append(match_file)
-    return dev_eval
-
-
-def calculate_score(arr_1, arr_2):
-    sm = len(set(arr_1) - set(arr_2))
-    score = (1 - sm / len(arr_2)) * 100
-    return score
-
-def calculate_query(sentence):
-    """
-    Code transfer query in here
-    :param sentence:
-    :return:
-    """
-    result = None
-
-    return result
-
-
-if __name__ == "__main__":
-    query = init_query()
-    dev_eval = init_dev_eval()
-    vector_trained = read_list()
-    result_score = []
-
-
-    with open("../vocab.words.txt", "r") as f:
-        word_to_idx = {line.strip(): idx for idx, line in enumerate(f)}
-
-    for q in query:
-        idx_q = q[0]
-        sentence_pred_vec = calculate_query(q[1].split()) # sentence for query in here
-        y_real = dev_eval[idx_q]
-
-        temp_order_predict = {} # Score for each doc per query in here
-
-        # Only get top doc similarity score with length == result doc in here
-        y_pred = [i[0] for i in temp_order_predict[:len(y_real)]]
-
-        # y_pred have to be same length with y_real
-        result_score.append(calculate_score(y_real, y_pred))
-    print(result_score)
-    score = sum(result_score) / len(result_score)
-    print(score)
+    
