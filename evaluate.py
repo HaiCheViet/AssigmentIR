@@ -7,7 +7,6 @@ import numpy as np
 from export_vector import get_dense
 from numpy import dot
 from numpy.linalg import norm
-from tqdm import tqdm
 
 from clean_data import normalize
 
@@ -54,41 +53,39 @@ def calculate_score(arr_1, arr_2):
     score = (1 - sm / len(arr_2)) * 100
     return score
 
+def calculate_query(sentence):
+    """
+    Code transfer query in here
+    :param sentence:
+    :return:
+    """
+    result = None
+
+    return result
+
 
 if __name__ == "__main__":
     query = init_query()
     dev_eval = init_dev_eval()
     vector_trained = read_list()
-    path_output = "result/"
     result_score = []
+
 
     with open("../vocab.words.txt", "r") as f:
         word_to_idx = {line.strip(): idx for idx, line in enumerate(f)}
 
-    for q in tqdm(query):
+    for q in query:
         idx_q = q[0]
-        sentence_pred_vec = sum([get_dense(word_to_idx, i) for i in set(q[1].split())])
+        sentence_pred_vec = calculate_query(q[1].split()) # sentence for query in here
         y_real = dev_eval[idx_q]
 
-        temp_order_predict = {}
+        temp_order_predict = {} # Score for each doc per query in here
 
-        for vector_doc in vector_trained:
-            idx_v = vector_doc[0].split(".")[0]
-            sentence_vector = vector_doc[1]
+        # Only get top doc similarity score with length == result doc in here
+        y_pred = [i[0] for i in temp_order_predict[:len(y_real)]]
 
-            cos_sim = dot(sentence_vector, sentence_pred_vec) / (norm(sentence_vector) * norm(sentence_pred_vec))
-            if isinstance(cos_sim, np.float64):
-                temp_order_predict[idx_v] = cos_sim
-            else:
-                temp_order_predict[idx_v] = 0
-
-        temp_order_predict = list(sorted(temp_order_predict.items(), key=lambda kv: (kv[1], kv[0]), reverse=True))
-        y_pred = [i[0] for i in temp_order_predict]
-
-        with open(path_output + f"{idx_q}.txt", "w") as f:
-            for i in y_pred:
-                f.write(f"{idx_q} {i}\n")
-        # result_score.append(calculate_score(y_real, y_pred))
-    # print(result_score)
-    # score = sum(result_score) / len(result_score)
-    # print(score)
+        # y_pred have to be same length with y_real
+        result_score.append(calculate_score(y_real, y_pred))
+    print(result_score)
+    score = sum(result_score) / len(result_score)
+    print(score)
