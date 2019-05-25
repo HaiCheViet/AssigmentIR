@@ -7,10 +7,11 @@ nlp = spacy.load("en")
 
 
 def remove_special_character(text):
-    data = re.sub("[^a-z0-9@.\-']", " ", text)
+    data = re.sub("[^a-z@\']", " ", text)
     return data
 
 def normalize(text):
+    text = text.lower()
     text = remove_special_character(text)
     doc = nlp(text)
     result = []
@@ -19,8 +20,9 @@ def normalize(text):
         if not token.is_stop and not token.is_punct:
             if token.lemma_ != " ":
                 result.append(token.lemma_)
-
-    return " ".join(result)
+    result = " ".join(result)
+    result = re.sub(' +', ' ',result)
+    return result
 
 if __name__ == "__main__":
     list_data = glob.glob("../raw_data/*")

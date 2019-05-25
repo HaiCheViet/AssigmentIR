@@ -21,7 +21,7 @@ for file_name in tqdm(query_index_list):
     with open(os.path.join(path, r'DEV-TEST/RES', file_name)) as f1:
         real_doc_list = read_real_file(f1.read())
         f1.close()
-    with open(os.path.join(path,'result',file_name)) as f2:
+    with open(os.path.join(path,'result_embedding',file_name)) as f2:
         predict_doc_list = read_predict_file(f2.read())
         f2.close()
     expected_relevant_doc_number = len(real_doc_list)
